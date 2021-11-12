@@ -20,9 +20,13 @@ const routes = [{
     },
     // 动态段以冒号开始
     {
-        path:'/users/:id',
+        path:'/user/:userId',
         name:'User',
         component: () => import(/* webpackChunkName:"user" */'../views/User.vue')
+    },{
+        path:'/login',
+        name:'Login',
+        component: () => import(/* webpackChunkName:"login" */'../views/Login.vue')
     }
 ]
 

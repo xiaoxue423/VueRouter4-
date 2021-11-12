@@ -2,9 +2,11 @@ import {
     createRouter,
     createWebHashHistory
 } from 'vue-router'
-import Home from '../views/Home.vue'
-// import About from '../views/About.vue'
 
+// 非懒加载
+import Home from '../views/Home.vue'
+
+//这些都会传递给createRouter
 const routes = [{
         path: '/',
         name: 'Home',
@@ -13,7 +15,14 @@ const routes = [{
     {
         path: '/about',
         name: 'About',
-        component: () => import('../views/About.vue')
+        // 路由懒加载
+        component: () => import(/* webpackChunkName:"about" */'../views/About.vue')
+    },
+    // 动态段以冒号开始
+    {
+        path:'/users/:id',
+        name:'User',
+        component: () => import(/* webpackChunkName:"user" */'../views/User.vue')
     }
 ]
 
